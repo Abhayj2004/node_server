@@ -156,7 +156,7 @@ const app = express();
 // === CONFIG ===
 const clientId = process.env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://ajreactapp.vercel.app"; // Change to your frontend
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://abhireact.vercel.app"; // Change to your frontend
 const CALLBACK_URL = process.env.CALLBACK_URL || "https://nodeserver-omega.vercel.app/auth/google/callback"; // Update after deploy
 
 // === MIDDLEWARE ===
