@@ -3,6 +3,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 require('./db/conn'); 
+const MongoStore = require('connect-mongo'); // Import connect-mongo for session storage
+// import MongoStore from "connect-mongo";
+
 // const mongoose = require('mongoose');
 // // const bcrypt = require('bcryptjs');
 
@@ -28,11 +31,16 @@ app.use(express.json());
 
 
 //setup session
+
+
 app.use(session({
-    secret: 'bvjdfhvs6er37e837543rhvwefhfvw7',
-    resave: false,  
-    saveUninitialized: true
-}))
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE
+  })
+}));
 
 
 //setup passport
@@ -86,8 +94,8 @@ app.get("/health", (_, res) => res.send("ok"));
 app.get("/auth/google", passport.authenticate("google",{scope:["profile", "email"]}));   
 
 app.get("/auth/google/callback", passport.authenticate("google", {
-successRedirect: "http://localhost:3000/dashboard",
-failureRedirect: "http://localhost:3000/login"
+successRedirect: "https://reactabhi-two.vercel.app/dashboard",
+failureRedirect: "https://reactabhi-two.vercel.app/login"
 }));
 
 
@@ -109,7 +117,7 @@ app.get('/login/sucess', (req, res) => {
 app.get('/logout', (req, res, next) => {
     req.logout((err) => {
         if (err) { return next(err)}
-        res.redirect("http://localhost:3000"); // Redirect to login page after logout
+        res.redirect("https://reactabhi-two.vercel.app/login"); // Redirect to login page after logout
         })
     });
 
