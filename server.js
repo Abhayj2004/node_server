@@ -52,7 +52,7 @@ app.use(passport.session());
 passport.use(new Oauth2Strategy({
     clientID: clientId,
     clientSecret: clientSecret,
-    callbackURL: "http://localhost:3001/auth/google/callback",
+    callbackURL: "https://reactabhi-two.vercel.app/auth/google/callback",
     scope: ['profile', 'email']
 },
 async (accessToken, refreshToken, profile, done) => {
