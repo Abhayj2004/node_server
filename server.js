@@ -49,7 +49,7 @@ app.use(passport.session());
 passport.use(new Oauth2Strategy({
     clientID: clientId,
     clientSecret: clientSecret,
-    callbackURL: "https://node-server-zc4m.onrender.com /auth/google/callback",
+    callbackURL: "https://node-server-zc4m.onrender.com/auth/google/callback",
     scope: ['profile', 'email']
 },
 async (accessToken, refreshToken, profile, done) => {
@@ -114,7 +114,7 @@ app.get('/login/sucess', (req, res) => {
 app.get('/logout', (req, res, next) => {
     req.logout((err) => {
         if (err) { return next(err)}
-        res.redirect("https://reactabhi-two.vercel.app/login"); // Redirect to login page after logout
+        res.redirect("https://reactabhi-two.vercel.app"); // Redirect to login page after logout
         })
     });
 
