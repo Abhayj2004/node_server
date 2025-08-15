@@ -20,7 +20,7 @@ const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
 
 app.use(cors({
-    origin:"https://reactabhi-two.vercel.app", // Adjust this to your frontend's URL
+    origin:"https://ajreactapp.vercel.app", // Adjust this to your frontend's URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
@@ -91,8 +91,8 @@ app.get("/health", (_, res) => res.send("ok"));
 app.get("/auth/google", passport.authenticate("google",{scope:["profile", "email"]}));   
 
 app.get("/auth/google/callback", passport.authenticate("google", {
-successRedirect: "https://reactabhi-two.vercel.app/dashboard",
-failureRedirect: "https://reactabhi-two.vercel.app/login"
+successRedirect: "https://ajreactapp.vercel.app/dashboard",
+failureRedirect: "https://ajreactapp.vercel.app/login"
 }));
 
 
@@ -114,7 +114,7 @@ app.get('/login/sucess', (req, res) => {
 app.get('/logout', (req, res, next) => {
     req.logout((err) => {
         if (err) { return next(err)}
-        res.redirect("https://reactabhi-two.vercel.app"); // Redirect to login page after logout
+        res.redirect("https://ajreactapp.vercel.app"); // Redirect to login page after logout
         })
     });
 
