@@ -4,10 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 require('./db/conn'); 
 const MongoStore = require('connect-mongo'); // Import connect-mongo for session storage
-// import MongoStore from "connect-mongo";
 
-// const mongoose = require('mongoose');
-// // const bcrypt = require('bcryptjs');
 
 const userschema= require("./Model/userschema")// Ensure the database connection is established    
 
@@ -52,7 +49,7 @@ app.use(passport.session());
 passport.use(new Oauth2Strategy({
     clientID: clientId,
     clientSecret: clientSecret,
-    callbackURL: "https://reactabhi-two.vercel.app/auth/google/callback",
+    callbackURL: "https://node-server-zc4m.onrender.com /auth/google/callback",
     scope: ['profile', 'email']
 },
 async (accessToken, refreshToken, profile, done) => {
