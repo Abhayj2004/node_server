@@ -18,8 +18,9 @@ const Oauth2Strategy = require('passport-google-oauth20').Strategy;
 const clientId = process.env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
+const allowed = ["https://reactabhi-two.vercel.app", "http://localhost:3000"];
 app.use(cors({
-    origin:"http://localhost:3000", // Adjust this to your frontend's URL
+    origin: allowed, // Adjust this to your frontend's URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
@@ -79,6 +80,8 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((user, done) => {
     done(null,user);
 })
+
+app.get("/health", (_, res) => res.send("ok"));
 
 app.get("/auth/google", passport.authenticate("google",{scope:["profile", "email"]}));   
 
