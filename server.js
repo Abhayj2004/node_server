@@ -18,9 +18,9 @@ const Oauth2Strategy = require('passport-google-oauth20').Strategy;
 const clientId = process.env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
-const allowed = ["https://reactabhi-two.vercel.app", "http://localhost:3000"];
+
 app.use(cors({
-    origin: allowed, // Adjust this to your frontend's URL
+    origin:"https://reactabhi-two.vercel.app", // Adjust this to your frontend's URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }));
