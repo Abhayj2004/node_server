@@ -15,8 +15,8 @@ const session = require('express-session');
 const passport = require('passport');
 const Oauth2Strategy = require('passport-google-oauth20').Strategy; 
 
-const clientId = "793739609836-egipk3s2vd2b249tm5f4p0u9vjt4i9rf.apps.googleusercontent.com";
-const clientSecret = "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";
+const clientId = process.env.GOOGLE_CLIENT_ID;
+const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
 app.use(cors({
     origin:"http://localhost:3000", // Adjust this to your frontend's URL
